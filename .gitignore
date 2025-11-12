@@ -10,6 +10,7 @@ e_modules/
 .env
 .env.local
 server-service-account.json
+server/serviceAccountKey.json
 *.pem
 *.key
 
@@ -24,3 +25,8 @@ server-service-account.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Temporary files
+client/deployed.html
+client/out.html
+actions_runs.json
