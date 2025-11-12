@@ -58,7 +58,7 @@ export default function Register(){
 
   return (
     <div className="card">
-      <h2>Register</h2>
+      <h2>Register for AI Model Inventory Manager</h2>
       <form onSubmit={handleSubmit}>
         <label>Name</label>
         <input value={name} onChange={e=>setName(e.target.value)} type="text" required />
