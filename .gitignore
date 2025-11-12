@@ -1,0 +1,26 @@
+# Node modules
+**/node_modules/
+e_modules/
+
+# Build outputs
+/client/dist/
+/server/dist/
+
+# Env files and secrets
+.env
+.env.local
+server-service-account.json
+*.pem
+*.key
+
+# Editor directories
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
