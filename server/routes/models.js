@@ -1,3 +1,4 @@
+// Routes for AI model CRUD operations with authentication
 const express = require('express');
 const router = express.Router();
 const ModelEntry = require('../models/ModelEntry');
