@@ -1,3 +1,4 @@
+// Main App component with routing and authentication
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './services/auth'
