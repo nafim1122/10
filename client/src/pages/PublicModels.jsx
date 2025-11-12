@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { api } from '../services/api'
 import Loader from '../components/Loader'
 
@@ -82,7 +83,9 @@ export default function PublicModels(){
             <h3 className="card-title">{it.name || it.modelName}</h3>
             <p><strong>Framework:</strong> {it.framework}</p>
             <p><strong>Use case:</strong> {it.useCase}</p>
-            <p><strong>Dataset:</strong> {it.dataset}</p>
+            <div style={{ marginTop: 8 }}>
+              <Link to={`/models/${it._id}`} className="btn small">View Details</Link>
+            </div>
           </div>
         ))}
       </div>

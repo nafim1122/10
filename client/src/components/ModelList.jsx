@@ -30,7 +30,7 @@ export default function ModelList() {
     <div>
       <div className="list-header">
         <h2>Your models</h2>
-        <Link to="/add" className="btn">Add Model</Link>
+        <Link to="/add-model" className="btn">Add Model</Link>
       </div>
       {items.length === 0 ? (
         <div className="card">No models found. Add your first model.</div>

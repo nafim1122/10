@@ -14,7 +14,7 @@ import ModelPurchase from './pages/ModelPurchase'
 import MyModels from './pages/MyModels'
 import MyPurchases from './pages/MyPurchases'
 import NotFound from './pages/NotFound'
-import Home from './pages/Home'
+import ModelDetails from './pages/ModelDetails'
 
 function Protected({ children }) {
   const { user, initializing } = useAuth();
@@ -32,12 +32,13 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Home />} />
-            <Route path="/public" element={<PublicModels />} />
-            <Route path="/purchase" element={<Protected><ModelPurchase /></Protected>} />
+            <Route path="/models" element={<PublicModels />} />
+            <Route path="/models/:id" element={<Protected><ModelDetails /></Protected>} />
+            <Route path="/add-model" element={<Protected><ModelForm /></Protected>} />
+            <Route path="/update-model/:id" element={<Protected><ModelForm editMode={true} /></Protected>} />
             <Route path="/my-models" element={<Protected><MyModels /></Protected>} />
             <Route path="/my-purchases" element={<Protected><MyPurchases /></Protected>} />
-            <Route path="/add" element={<Protected><ModelForm /></Protected>} />
-            <Route path="/edit/:id" element={<Protected><ModelForm editMode={true} /></Protected>} />
+            <Route path="/purchase" element={<Protected><ModelPurchase /></Protected>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

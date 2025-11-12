@@ -67,7 +67,8 @@ export default function ModelCard({ item, onDeleted }) {
   <p><strong>Use case:</strong> {item.useCase}</p>
   <p><strong>Dataset:</strong> {item.dataset}</p>
       <div className="card-actions">
-        <Link to={`/edit/${item._id}`} className="btn small">Edit</Link>
+        <Link to={`/models/${item._id}`} className="btn small">View Details</Link>
+        <Link to={`/update-model/${item._id}`} className="btn small">Edit</Link>
         <button className="btn small danger" onClick={() => setConfirmOpen(true)}>Delete</button>
         {user && user.email !== item.createdBy && <button className="btn small primary" onClick={doPurchase}>Purchase</button>}
       </div>

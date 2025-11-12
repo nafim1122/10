@@ -29,8 +29,8 @@ export default function Nav() {
     <header className="nav">
       <div className="nav-left">
         <Link to="/" className="logo">ModelHub</Link>
-        <Link to="/public">All Models</Link>
-        <Link to="/add">Add Model</Link>
+        <Link to="/models">All Models</Link>
+        <Link to="/add-model">Add Model</Link>
       </div>
       <nav>
         <button title="Toggle theme" onClick={toggleTheme} className="btn small" style={{marginRight:8}}>{theme === 'dark' ? '🌙' : '☀️'}</button>

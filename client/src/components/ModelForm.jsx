@@ -40,11 +40,12 @@ export default function ModelForm({ editMode }) {
       if (editMode && id) {
         await api.updateModel(id, payload)
         toast.show('Model updated')
+        navigate(`/models/${id}`)
       } else {
         await api.createModel(payload)
         toast.show('Model created')
+        navigate('/models')
       }
-      navigate('/')
     } catch (err) {
       toast.show(err.response?.data?.error || 'Operation failed')
     } finally {
@@ -78,7 +79,7 @@ export default function ModelForm({ editMode }) {
 
         <div className="form-actions">
           <button className="btn" type="submit" disabled={submitting}>{submitting ? 'Saving…' : 'Save'}</button>
-          <button className="btn muted" type="button" onClick={() => navigate('/')} disabled={submitting}>Cancel</button>
+          <button className="btn muted" type="button" onClick={() => navigate('/models')} disabled={submitting}>Cancel</button>
         </div>
       </form>
     </div>
