@@ -31,7 +31,7 @@ export default function PublicModels(){
         try{
           const d = JSON.parse(ev.data)
           // update items if present
-          setItems(prev => prev.map(it => it._id === d.id ? { ...it, purchased: d.purchased } : it))
+          setItems(prev => prev.map(it => it._id === d.id ? { ...it, purchasesCount: d.purchasesCount, purchased: d.purchased } : it))
           // dispatch a global event so other components (e.g., cards) can update
           try{ window.dispatchEvent(new CustomEvent('modelPurchase', { detail: d })) }catch(e){}
         }catch(e){ }

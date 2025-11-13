@@ -15,16 +15,15 @@ const PORT = process.env.PORT || 4000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  console.error('MONGODB_URI must be set in environment');
-  process.exit(1);
+  console.warn('MONGODB_URI not set; starting server without database connection (API calls may fail)');
+} else {
+  mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => {
+      console.error('MongoDB connection error', err.message);
+      // Keep server running for non-DB endpoints
+    });
 }
-
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => {
-    console.error('MongoDB connection error', err.message);
-    process.exit(1);
-  });
 
 app.use('/api/models', modelsRoute);
 app.use('/api/public', publicRoute);

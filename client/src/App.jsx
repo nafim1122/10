@@ -1,6 +1,6 @@
 // Main App component with routing and authentication
 import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider, useAuth } from './services/auth'
 import Nav from './components/Nav'
 import Login from './components/Login'
@@ -9,6 +9,7 @@ import ModelList from './components/ModelList'
 import ModelForm from './components/ModelForm'
 import ToastProvider from './components/Toast'
 import Footer from './components/Footer'
+import Home from './pages/Home'
 import PublicModels from './pages/PublicModels'
 import ModelPurchase from './pages/ModelPurchase'
 import MyModels from './pages/MyModels'
@@ -18,8 +19,9 @@ import ModelDetails from './pages/ModelDetails'
 
 function Protected({ children }) {
   const { user, initializing } = useAuth();
+  const location = useLocation();
   if (initializing) return <div className="center">Loading...</div>;
-  return user ? children : <Navigate to="/login" replace />;
+  return user ? children : <Navigate to="/login" replace state={{ from: location }} />;
 }
 
 export default function App() {

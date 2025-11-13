@@ -8,8 +8,9 @@ const ModelEntrySchema = new mongoose.Schema({
   description: { type: String, required: true },
   image: { type: String, required: true }, // ImgBB or other hosted image URL
   createdBy: { type: String, required: true }, // email of the creator
-  createdAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, required: true, default: Date.now },
   purchased: { type: Number, default: 0 },
+  purchasesCount: { type: Number, default: 0 },
   ratings: [{ by: String, rating: Number, createdAt: { type: Date, default: Date.now } }],
   ratingsCount: { type: Number, default: 0 },
   ratingsTotal: { type: Number, default: 0 },

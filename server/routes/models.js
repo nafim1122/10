@@ -49,11 +49,11 @@ router.post('/:id/purchase', verifyToken, async (req, res) => {
     if (!entry) return res.status(404).json({ error: 'Not found' });
     const purchase = new Purchase({ model: entry._id, purchasedBy: req.user.email });
     await purchase.save();
-    // atomic increment using $inc and return the updated document
-    const updated = await ModelEntry.findByIdAndUpdate(entry._id, { $inc: { purchased: 1 } }, { new: true });
+    // atomic increment purchasesCount (not view count) and return the updated document
+    const updated = await ModelEntry.findByIdAndUpdate(entry._id, { $inc: { purchasesCount: 1 } }, { new: true });
     // emit event for real-time clients
-    try { const events = require('../events'); events.emit('purchase', { id: updated._id.toString(), purchased: updated.purchased }); } catch (e) { }
-    res.json({ success: true, purchased: updated.purchased });
+    try { const events = require('../events'); events.emit('purchase', { id: updated._id.toString(), purchasesCount: updated.purchasesCount, purchased: updated.purchased }); } catch (e) { }
+    res.json({ success: true, purchasesCount: updated.purchasesCount });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to complete purchase' });

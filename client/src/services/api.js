@@ -25,13 +25,13 @@ export const api = {
 
 // Public endpoints and purchases
 api.listPublicModels = (params) => {
-  if (!params) return request('get', '/api/models/public');
+  if (!params) return request('get', '/api/public/models');
   // remove undefined/null values
-  const entries = Object.entries(params).filter(([k, v]) => v !== undefined && v !== null && v !== '');
-  const qs = entries.length ? `?${new URLSearchParams(Object.fromEntries(entries)).toString()}` : '';
-  return request('get', `/api/models/public${qs}`);
+  const entries = Object.entries(params).filter(([k, v]) => v !== undefined && v !== null && v !== '')
+  const qs = entries.length ? `?${new URLSearchParams(Object.fromEntries(entries)).toString()}` : ''
+  return request('get', `/api/public/models${qs}`);
 }
-api.listPublicFrameworks = () => request('get', '/api/models/frameworks');
+api.listPublicFrameworks = () => request('get', '/api/public/frameworks');
 api.purchaseModel = (id) => request('post', `/api/models/${id}/purchase`);
 api.getMyPurchases = () => request('get', '/api/purchases/my');
 api.rateModel = (id, rating) => request('post', `/api/models/${id}/rate`, { rating });
